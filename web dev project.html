@@ -1,0 +1,194 @@
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kwabena Owusu - Portfolio</title>
+  <style>
+    /* Define default and dark theme variables */
+    :root {
+      --bg-color: #f9f9f9;
+      --text-color: #333;
+      --accent-color: #0066cc;
+    }[data-theme="dark"] {
+  --bg-color: #121212;
+  --text-color: #f1f1f1;
+  --accent-color: #00ccff;
+}
+
+/* Global body styling */
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+}
+
+/* Header and footer styling */
+header, footer {
+  background-color: var(--accent-color);
+  color: white;
+  text-align: center;
+  padding: 1rem 0;
+}
+
+/* Main content padding */
+main {
+  padding: 20px;
+}
+
+/* Fun facts margin */
+.fun-facts {
+  margin-top: 20px;
+}
+
+/* Form styling for all forms */
+form {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  width: 100%;
+  max-width: 500px;
+}
+
+label {
+  margin-top: 10px;
+}
+
+input, textarea {
+  padding: 10px;
+  margin-top: 5px;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  background-color: var(--accent-color);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  margin-top: 20px;
+  width: fit-content;
+}
+
+button:focus {
+  outline: 2px dashed black;
+  outline-offset: 4px;
+}
+
+/* Style for confirmation message */
+.confirmation {
+  color: green;
+  margin-top: 15px;
+  font-weight: bold;
+  display: none;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 600px) {
+  form {
+    width: 100%;
+  }
+}
+
+  </style>
+</head><body>
+  <!-- Accessible header -->
+  <header>
+    <h1 tabindex="0">Kwabena Owusu</h1>
+    <p tabindex="0">Leadership | Advocacy | Analytics</p>
+  </header>  <main>
+    <!-- About section -->
+    <section aria-labelledby="bio-heading">
+      <h2 id="bio-heading">About Me</h2>
+      <p tabindex="0">
+        Kwabena Owusu is a very energetic and strong willed individual with over 3 years of leadership in the educational sector.
+        He has honed his skills in organization, communication, and leadership. His experience has allowed him to streamline
+        office processes, improving efficiency by XX% and enhance team collaboration. He is passionate about fostering financial
+        and digital literacy, Youth Advocacy and Mental health awareness. By driving impactful results through teamwork,
+        innovative thinking and positivity, Kwabena Owusu believes he is capable of more than what appears on the surface.
+      </p>
+      <p tabindex="0">
+        He is currently working on his Data analytics project for the Peckham-Daz program.
+      </p>
+    </section><!-- Fun facts section -->
+<section class="fun-facts" aria-labelledby="facts-heading">
+  <h2 id="facts-heading">Fun Facts</h2>
+  <ul>
+    <li tabindex="0">Kwabena loves a hot cup of tea every morning (Chamomile to be specific).</li>
+    <li tabindex="0">He is a very big fan of Mangaka Tite Kubo and Eiichiro Oda.</li>
+    <li tabindex="0">Kwabena hates the taste of raisins.</li>
+  </ul>
+</section>
+
+<!-- Contact form section -->
+<section aria-labelledby="contact-heading">
+  <h2 id="contact-heading">Contact Me</h2>
+  <form action="mailto:Dr.kwabenaBOG@hotmail.com" method="post" enctype="text/plain">
+    <label for="name">Name</label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="email">Your Email</label>
+    <input type="email" id="email" name="email" required>
+
+    <label for="message">Message</label>
+    <textarea id="message" name="message" rows="4" required></textarea>
+
+    <button type="submit">Send</button>
+  </form>
+</section>
+
+<!-- Feedback form section with JavaScript handling -->
+<section aria-labelledby="feedback-heading">
+  <h2 id="feedback-heading">Leave Feedback</h2>
+  <form id="feedbackForm">
+    <label for="fb-name">Your Name</label>
+    <input type="text" id="fb-name" name="fb-name" required>
+
+    <label for="fb-email">Your Email</label>
+    <input type="email" id="fb-email" name="fb-email" required>
+
+    <label for="fb-comment">Your Comment</label>
+    <textarea id="fb-comment" name="fb-comment" rows="4" required></textarea>
+
+    <button type="submit">Submit Feedback</button>
+
+    <!-- Message shown after successful submission -->
+    <p id="confirmationMessage" class="confirmation">Thank you for your feedback!</p>
+  </form>
+</section>
+
+<!-- Button to toggle color theme -->
+<button id="themeToggle" aria-label="Toggle color theme">Toggle Theme</button>
+
+  </main>  <!-- Page footer -->  <footer>
+    <p>&copy; 2025 Kwabena Owusu</p>
+  </footer>  <script>
+    // Theme toggle script
+    const themeToggle = document.getElementById('themeToggle');
+    themeToggle.addEventListener('click', () => {
+      const currentTheme = document.documentElement.getAttribute('data-theme');
+      if (currentTheme === 'dark') {
+        document.documentElement.removeAttribute('data-theme');
+      } else {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    });
+
+    // Feedback form confirmation script
+    const feedbackForm = document.getElementById('feedbackForm');
+    const confirmationMessage = document.getElementById('confirmationMessage');
+
+    feedbackForm.addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevent default form submission
+      confirmationMessage.style.display = 'block'; // Show confirmation message
+      feedbackForm.reset(); // Optionally reset the form
+    });
+  </script></body></html>
